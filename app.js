@@ -1,12 +1,13 @@
-var express = require('express'),
-app = express(),
-http = require('http'),
-server = http.createServer(app),
-io = require('socket.io').listen(server);
-server.listen(9000);
+var app = require('express')();
+app.set('port', process.env.PORT || 9000);
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
+var port = app.get('port');
+console.log(port);
+server.listen(port, process.env.IP);
 // routing
 app.get('/', function (req, res) {
-	res.sendfile(__dirname + '/index.html');
+    res.sendfile(__dirname + '/index.html');
 });
 // usernames which are currently connected to the chat
 var usernames = {};
@@ -14,12 +15,17 @@ var usernames = {};
 var rooms = [];
 io.sockets.on('connection', function (socket) {
 	socket.on('adduser', function (username, room) {
-		socket.username = username;
-		socket.room = room;
-		usernames[username] = username;
-		socket.join(room);
-		socket.emit('updatechat', 'SERVER', 'You are connected. Start chatting');
-        socket.broadcast.to(room).emit('updatechat', 'SERVER', username + ' has connected to this room');
+        if(rooms.indexOf(room) != -1)
+        {  
+            socket.username = username;
+            socket.room = room;
+            usernames[username] = username;
+            socket.join(room);
+            socket.emit('updatechat', 'SERVER', 'You are connected. Start chatting');
+            socket.broadcast.to(room).emit('updatechat', 'SERVER', username + ' has connected to this room');
+        }else{
+            socket.emit('updatechat', 'SERVER', 'Please enter valid code.');
+        }
     });
 	socket.on('createroom', function () {
 		var new_room = (""+Math.random()).substring(2,7);

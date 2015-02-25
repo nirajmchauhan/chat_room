@@ -2,7 +2,16 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>NodeJS Private Chat App | Niraj Chauhan</title>
+	<title>NodeJS Private Chat App</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="A private chat application built with nodejs & twitter bootstrap">
+	<meta name="author" content="Niraj Chauhan">
+	<meta property="og:title" content="NodeJS Private Chat App" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://chat-room-nirajmchauhan.c9.io/" />
+	<meta property="og:image" content="https://chat-room-nirajmchauhan.c9.io/nodejs-logo.png" >
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -24,10 +33,6 @@
 		$('#create_room_email').val("");
 	});
 
-	function switchRoom(room){
-		socket.emit('switchRoom', room);
-	}
-	
 	$(function(){
 		$('#datasend').click( function() {
 			var message = $('#data').val();
@@ -74,6 +79,11 @@
 			<div class="col-lg-12">
 				<div class="jumbotron">
 					<h1>Welcome to Private Chat Room</h1>
+					<p>
+						<a href="https://twitter.com/nirajmchauhan" class="twitter-follow-button" data-show-count="false">Follow @nirajmchauhan</a>
+						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+						<iframe class="btn" border="0" scrolling="no" allowtransparency="true" src="http://platform.tumblr.com/v1/follow_button.html?button_type=2&tumblelog=nirajmchauhan&color_scheme=dark" frameborder="0" height="25" width="114"></iframe>
+					</p>
 				</div>
 			</div>
 		</div>
@@ -130,6 +140,7 @@
 			</div>
 		</div>
 	</div>
+	<a href="https://github.com/nirajmchauhan/chat_room"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
 <style>
 	.col-lg-8 .input-group {
 	    margin: 0 0 20px 0;
