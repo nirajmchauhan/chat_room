@@ -1,0 +1,9 @@
+{
+	"name": "nirajmchauhan",
+	"description": "NodeJS Private Chat Room",
+	"version": "0.0.1",
+	"dependencies": {
+		"express": "",
+		"socket.io": ""
+	}
+}
